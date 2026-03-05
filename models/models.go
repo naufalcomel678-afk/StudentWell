@@ -28,10 +28,10 @@ type User struct {
 func (User) TableName() string { return "user" }
 
 type Mahasiswa struct {
-	IDUser        uint      `gorm:"primaryKey;column:id_user"`
+	IDUser        uint      `gorm:"primaryKey;column:id_user;autoIncrement:false"` // Matikan autoIncrement
 	IDJurusan     uint      `gorm:"column:id_jurusan"`
-	Angkatan      int       `gorm:"column:angkatan"` // Di SQL 'YEAR' dipetakan ke int di Go
-	TanggalDaftar time.Time `gorm:"column:tanggal_daftar;type:date"`
+	Angkatan      int       `gorm:"column:angkatan"`
+	TanggalDaftar time.Time `gorm:"column:tanggal_daftar"`
 	User          User      `gorm:"foreignKey:IDUser"`
 	Jurusan       Jurusan   `gorm:"foreignKey:IDJurusan"`
 }
@@ -39,8 +39,8 @@ type Mahasiswa struct {
 func (Mahasiswa) TableName() string { return "mahasiswa" }
 
 type Kategori struct {
-	IDKategori   uint   `gorm:"primaryKey;column:id_kategori"`
-	NamaKategori string `gorm:"column:nama_kategori"`
+	IDKategori   uint   `gorm:"primaryKey;column:id_kategori"` // Harus id_kategori
+	NamaKategori string `gorm:"column:nama_kategori"`          // Harus nama_kategori
 }
 
 func (Kategori) TableName() string { return "kategori" }

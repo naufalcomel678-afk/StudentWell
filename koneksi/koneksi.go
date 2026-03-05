@@ -10,7 +10,7 @@ import (
 var DB *gorm.DB
 
 func KoneksiDatabase() {
-	dsn := "root:@tcp(127.0.0.1:3306)/db_stress?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:@tcp(127.0.0.1:3306)/db_stress_baru?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("Gagal koneksi database")
